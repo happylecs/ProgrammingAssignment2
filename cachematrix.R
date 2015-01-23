@@ -1,7 +1,15 @@
+## Note: This code has dependencies on MASS package. 
+##  Ensure you have this package or install using
+##  install.packages("MASS")
+
 ## makeCacheMatrix is a method to define
 ## a matrix for which Inverse has to be cached
 
 makeCacheMatrix <- function(x = matrix()) {
+#This Function contains four functions: get,set to 
+# call & initialize a matrix respectivBely
+# getInv & setInv to the inverse and compute
+# inverse the matrix defined via first two functions
   xInv<<-NULL
   set <- function(y){
     x<<-y
@@ -28,6 +36,7 @@ cacheSolve <- function(x, ...) {
   }
   
   mat<-x$get()
+  #Load MASS package to compute matrix inverse
   library(MASS)
   inv<-ginv(mat)
   x$setInv(inv)
